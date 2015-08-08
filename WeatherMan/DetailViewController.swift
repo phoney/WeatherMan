@@ -8,10 +8,9 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UITableViewController {
 
-	@IBOutlet weak var detailDescriptionLabel: UILabel!
-
+	var objects = [AnyObject]()
 
 	var detailItem: AnyObject? {
 		didSet {
@@ -22,11 +21,6 @@ class DetailViewController: UIViewController {
 
 	func configureView() {
 		// Update the user interface for the detail item.
-		if let detail: AnyObject = self.detailItem {
-		    if let label = self.detailDescriptionLabel {
-		        label.text = detail.description
-		    }
-		}
 	}
 
 	override func viewDidLoad() {
@@ -38,6 +32,38 @@ class DetailViewController: UIViewController {
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
+	}
+
+	// MARK: - Table View
+	
+	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return 1
+	}
+	
+	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return objects.count
+	}
+	
+	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+		
+		let object = objects[indexPath.row] as! NSDate
+		cell.textLabel!.text = object.description
+		return cell
+	}
+	
+	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+		// Return false if you do not want the specified item to be editable.
+		return true
+	}
+	
+	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+		if editingStyle == .Delete {
+			objects.removeAtIndex(indexPath.row)
+			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+		} else if editingStyle == .Insert {
+			// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+		}
 	}
 
 
