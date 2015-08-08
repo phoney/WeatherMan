@@ -19,7 +19,7 @@
             </objects>
             <point key="canvasLocation" x="-38" y="-630"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Forecast-->
         <scene sceneID="RWE-6e-5xM">
             <objects>
                 <tableViewController id="9ZF-68-ULj" customClass="DetailViewController" customModule="WeatherMan" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +40,7 @@
                             <outlet property="delegate" destination="9ZF-68-ULj" id="ZZo-4s-Erj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="CwH-Go-Yik"/>
+                    <navigationItem key="navigationItem" title="Forecast" id="CwH-Go-Yik"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KD9-jC-SGY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,7 +96,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vC3-pB-5Vb" kind="show" id="NGZ-st-qUo"/>
+                                    <segue destination="vC3-pB-5Vb" kind="show" identifier="showDetail" id="NGZ-st-qUo"/>
                                 </connections>
                             </button>
                         </subviews>
