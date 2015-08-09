@@ -14,6 +14,9 @@
 		38E0E94B1B769C3C00027EB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38E0E94A1B769C3C00027EB1 /* Images.xcassets */; };
 		38E0E94E1B769C3C00027EB1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38E0E94C1B769C3C00027EB1 /* LaunchScreen.xib */; };
 		38E0E95A1B769C3C00027EB1 /* WeatherManTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E0E9591B769C3C00027EB1 /* WeatherManTests.swift */; };
+		38E0E9641B76B73400027EB1 /* WeatherFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E0E9631B76B73400027EB1 /* WeatherFetcher.swift */; };
+		38E0E9661B76B95600027EB1 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E0E9651B76B95600027EB1 /* Weather.swift */; };
+		38E0E9681B76C02A00027EB1 /* WeatherFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E0E9671B76C02A00027EB1 /* WeatherFetcherTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		38E0E9531B769C3C00027EB1 /* WeatherManTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherManTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38E0E9581B769C3C00027EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38E0E9591B769C3C00027EB1 /* WeatherManTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManTests.swift; sourceTree = "<group>"; };
+		38E0E9631B76B73400027EB1 /* WeatherFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherFetcher.swift; path = Source/WeatherFetcher.swift; sourceTree = "<group>"; };
+		38E0E9651B76B95600027EB1 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Weather.swift; path = Source/Weather.swift; sourceTree = "<group>"; };
+		38E0E9671B76C02A00027EB1 /* WeatherFetcherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherFetcherTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,8 @@
 				38E0E9411B769C3C00027EB1 /* AppDelegate.swift */,
 				38E0E9431B769C3C00027EB1 /* MasterViewController.swift */,
 				38E0E9451B769C3C00027EB1 /* DetailViewController.swift */,
+				38E0E9631B76B73400027EB1 /* WeatherFetcher.swift */,
+				38E0E9651B76B95600027EB1 /* Weather.swift */,
 				38E0E9471B769C3C00027EB1 /* Main.storyboard */,
 				38E0E94A1B769C3C00027EB1 /* Images.xcassets */,
 				38E0E94C1B769C3C00027EB1 /* LaunchScreen.xib */,
@@ -102,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				38E0E9591B769C3C00027EB1 /* WeatherManTests.swift */,
+				38E0E9671B76C02A00027EB1 /* WeatherFetcherTests.swift */,
 				38E0E9571B769C3C00027EB1 /* Supporting Files */,
 			);
 			path = WeatherManTests;
@@ -215,9 +224,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38E0E9641B76B73400027EB1 /* WeatherFetcher.swift in Sources */,
 				38E0E9461B769C3C00027EB1 /* DetailViewController.swift in Sources */,
 				38E0E9441B769C3C00027EB1 /* MasterViewController.swift in Sources */,
 				38E0E9421B769C3C00027EB1 /* AppDelegate.swift in Sources */,
+				38E0E9661B76B95600027EB1 /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38E0E9681B76C02A00027EB1 /* WeatherFetcherTests.swift in Sources */,
 				38E0E95A1B769C3C00027EB1 /* WeatherManTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,6 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = WeatherMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -356,6 +369,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = WeatherMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

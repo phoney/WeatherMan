@@ -11,6 +11,8 @@ import UIKit
 class DetailViewController: UITableViewController {
 
 	var objects = [AnyObject]()
+	
+	var weatherFetcher:WeatherFetcher?
 
 	var detailItem: String? {
 		didSet {
@@ -53,7 +55,23 @@ class DetailViewController: UITableViewController {
 	// MARK: - Weather
 	
 	func fetchWeather() {
+		if weatherFetcher == nil {
+			weatherFetcher = WeatherFetcher()
+		}
 		
+		let startDate = NSDate()
+		let endDate = NSDate()
+		let zipcode = detailItem!
+		
+		weatherFetcher?.fetchWeatherForZipCode(zipcode, startDate: startDate, endDate: endDate, completion: { (result: Array<Weather>?, error: NSError?) -> Void in
+			
+			if (error == nil) {
+				
+			} else {
+
+			}
+			
+		})
 	}
 	
 

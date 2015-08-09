@@ -20,7 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 		let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
 		navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
 		splitViewController.delegate = self
+		
+		printSystemDescription()
+		
 		return true
+	}
+	
+	func printSystemDescription() {
+		println("OS version \(UIDevice.currentDevice().systemVersion)")
 	}
 
 	func applicationWillResignActive(application: UIApplication) {
