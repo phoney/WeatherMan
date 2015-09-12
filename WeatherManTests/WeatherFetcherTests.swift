@@ -32,28 +32,32 @@ class WeatherFetcherTests: XCTestCase {
 		let startDate = NSDate()
 		let endDate = NSDate(timeIntervalSinceNow: 60 * 60 * 24)
 		
-			weatherFetcher.fetchWeatherForZipCode(zipcode, startDate: startDate, endDate: endDate, completion: { (result: Array<Weather>?, error: NSError?) -> Void in
+		weatherFetcher.fetchWeatherForZipCode(zipcode, startDate: startDate, endDate: endDate, completion: { (result: Array<Weather>?, error: NSError?) -> Void in
 				XCTAssertNil(error, "error can't be nil")
 				
 				expectation.fulfill()
-			})
+		})
+
 		waitForExpectationsWithTimeout(30) { error in
 		}
     }
 
-	func testParameterString() {
+	func testParameterStringTwoParameters() {
 		
-		var parameters = ["one": "one-value", "two" : "two-value"]
-		var expected = "?one=one-value&two=two-value"
-		var parameterString = weatherFetcher.parameterStringFromDictionary(parameters)
+		let parameters = ["one": "one-value", "two" : "two-value"]
+		let expected = "?one=one-value&two=two-value"
+		let parameterString = weatherFetcher.parameterStringFromDictionary(parameters)
 		
 		XCTAssert(parameterString == expected, "Parameter String failure")
+	}
+
+	func testParameterStringNoParameters() {
 		
-		parameters = Dictionary()
-		expected = ""
-		parameterString = weatherFetcher.parameterStringFromDictionary(parameters)
+		let parameters:Dictionary<String, String> = Dictionary()
+		let expected = ""
+		let parameterString = weatherFetcher.parameterStringFromDictionary(parameters)
+
 		XCTAssert(parameterString == expected, "Parameter String failure")
-		
 	}
 
 }

@@ -10,7 +10,10 @@ import UIKit
 
 public class Weather: NSObject {
 	
-	var minTemp:Int?
-	var maxTemp:Int?
-   
+	var minTemp:Int = 0
+	var maxTemp:Int = 0
+	var weatherSummary:String = ""
+	var conditionsIconLink:String = ""
+	var time:String = ""
+
 }
