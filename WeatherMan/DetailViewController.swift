@@ -17,7 +17,7 @@ class DetailViewController: UITableViewController {
 	var detailItem: String? {
 		didSet {
 		    // Update the view.
-			println("zipcode \(detailItem)")
+			print("zipcode \(detailItem)")
 			self.fetchWeather()
 		    self.configureView()
 		}
@@ -45,7 +45,7 @@ class DetailViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
 		
 		let object = objects[indexPath.row] as! NSDate
 		cell.textLabel!.text = object.description

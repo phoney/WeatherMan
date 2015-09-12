@@ -26,7 +26,8 @@ class MasterViewController: UIViewController, UITextFieldDelegate {
 		// Do any additional setup after loading the view, typically from a nib.
 		if let split = self.splitViewController {
 		    let controllers = split.viewControllers
-		    self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
+			let navigationController = controllers[controllers.count-1] as! UINavigationController
+			self.detailViewController = navigationController.topViewController as? DetailViewController
 		}
 		
 		updateFetchWeatherButton()
@@ -38,7 +39,7 @@ class MasterViewController: UIViewController, UITextFieldDelegate {
 	}
 	
 	func updateFetchWeatherButton() {
-		self.fetchWeatherButton.enabled = isValidZipCode(zipcodeTextField.text)
+		self.fetchWeatherButton.enabled = isValidZipCode(zipcodeTextField.text!)
 	}
 
 	// MARK: - Textfield
@@ -46,9 +47,9 @@ class MasterViewController: UIViewController, UITextFieldDelegate {
 	// return NO to not change text
 	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
 		// We're using the numberpad so no need to validate that the string is numbers only
-		let zipcodeText = zipcodeTextField.text as NSString
+		let zipcodeText = zipcodeTextField.text! as NSString
 		let resultText = zipcodeText.stringByReplacingCharactersInRange(range, withString: string) as String
-		let valid = count(resultText) <= 5
+		let valid = resultText.characters.count <= 5
 		
 		return valid
 	}
@@ -58,7 +59,7 @@ class MasterViewController: UIViewController, UITextFieldDelegate {
 	}
 	
 	func isValidZipCode(zipcode: String ) -> Bool {
-		let length = count(zipcode)
+		let length = zipcode.characters.count
 		return length == 5
 	}
 
