@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		38A5FC6D1B799F930063174C /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A5FC6C1B799F930063174C /* XMLReader.m */; };
-		38A5FC701B79A4350063174C /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A5FC6C1B799F930063174C /* XMLReader.m */; };
 		38A6B1411BA4EA45004E72BF /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A6B1401BA4EA45004E72BF /* WeatherCell.swift */; settings = {ASSET_TAGS = (); }; };
 		38E0E9421B769C3C00027EB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E0E9411B769C3C00027EB1 /* AppDelegate.swift */; };
 		38E0E9441B769C3C00027EB1 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E0E9431B769C3C00027EB1 /* MasterViewController.swift */; };
@@ -206,7 +205,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Brian Stern";
 				TargetAttributes = {
 					38E0E93B1B769C3C00027EB1 = {
@@ -264,13 +263,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38E0E9641B76B73400027EB1 /* WeatherFetcher.swift in Sources */,
 				38E0E9461B769C3C00027EB1 /* DetailViewController.swift in Sources */,
 				38E0E9441B769C3C00027EB1 /* MasterViewController.swift in Sources */,
 				38E0E9421B769C3C00027EB1 /* AppDelegate.swift in Sources */,
+				38E0E9641B76B73400027EB1 /* WeatherFetcher.swift in Sources */,
 				38E0E9661B76B95600027EB1 /* Weather.swift in Sources */,
-				38A5FC6D1B799F930063174C /* XMLReader.m in Sources */,
 				38A6B1411BA4EA45004E72BF /* WeatherCell.swift in Sources */,
+				38A5FC6D1B799F930063174C /* XMLReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +279,6 @@
 			files = (
 				38E0E9681B76C02A00027EB1 /* WeatherFetcherTests.swift in Sources */,
 				38E0E95A1B769C3C00027EB1 /* WeatherManTests.swift in Sources */,
-				38A5FC701B79A4350063174C /* XMLReader.m in Sources */,
 				38E0E96C1B780C8500027EB1 /* XMLReaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +334,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -406,6 +405,7 @@
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = WeatherMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeatherMan/WeatherMan-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -420,6 +420,7 @@
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = WeatherMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeatherMan/WeatherMan-Bridging-Header.h";
 			};
@@ -429,16 +430,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = WeatherManTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherMan.app/WeatherMan";
 			};
@@ -448,12 +447,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = WeatherManTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherMan.app/WeatherMan";
 			};

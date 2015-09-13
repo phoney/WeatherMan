@@ -44,7 +44,7 @@ public class WeatherFetcher: NSObject {
 		weekdayFormatter.dateFormat = "EEEE"
 	}
 	
-	public func fetchWeatherForZipCode(zipcode: String, startDate: NSDate, endDate:NSDate, completion: (Array<Weather>?, NSError?) -> Void) {
+	func fetchWeatherForZipCode(zipcode: String, startDate: NSDate, endDate:NSDate, completion: (Array<Weather>?, NSError?) -> Void) {
 		
 		let parameters = [ "zipCodeList" : zipcode, "format" : format, "numDays" : numDays ]
 		let urlString = noaaURL + parameterStringFromDictionary(parameters)
@@ -92,7 +92,7 @@ public class WeatherFetcher: NSObject {
 		let minimumTemperatures = temperatureFromParametersDictionary(parameters, index: 1)
 		let iconLinks = iconLinksFromParametersDictionary(parameters)
 		let weatherSummaries = weatherSummariesFromParametersDictionary(parameters)
-		let dayNames = dateListFromToday()
+		let dayNames = dateListFromDate(NSDate(), numberOfDays: 10)
 		
 		var resultList:Array<Weather> = []
 		let count = minimumTemperatures.count - 1
@@ -173,7 +173,7 @@ public class WeatherFetcher: NSObject {
 		return []
 	}
 
-	public func parameterStringFromDictionary(parameters: Dictionary<String, String>) -> String {
+	func parameterStringFromDictionary(parameters: Dictionary<String, String>) -> String {
 		
 		var parameterString = ""
 		
@@ -188,13 +188,13 @@ public class WeatherFetcher: NSObject {
 		return parameterString
 	}
 	
-	func dateListFromToday() -> Array<String> {
+	func dateListFromDate(date: NSDate, numberOfDays: Int) -> Array<String> {
 		var dates:Array<String> = []
 		let calendar = NSCalendar.currentCalendar()
 		let calendarUnits: NSCalendarUnit = [.Day, .Month, .Year]
-		var day = NSDate()
+		var day = date
 
-		for _ in 0...10 {
+		for _ in 0...numberOfDays {
 			let dayOfWeek = weekdayFormatter.stringFromDate(day)
 			dates.append(dayOfWeek)
 
@@ -205,8 +205,12 @@ public class WeatherFetcher: NSObject {
 			day = calendar.dateFromComponents(dayInComponents)!
 		}
 		
-		dates[0] = "Today"
-		dates[1] = "Tomorrow"
+		if numberOfDays >= 1 {
+			dates[0] = "Today"
+			if numberOfDays >= 2 {
+				dates[1] = "Tomorrow"
+			}
+		}
 		
 		return dates
 	}
@@ -227,9 +231,5 @@ public class WeatherFetcher: NSObject {
 		
 		print("\(stringPath)")
 	}
-	
-	
-	
-	
 	
 }

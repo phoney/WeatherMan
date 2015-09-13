@@ -8,7 +8,7 @@
 
 import UIKit
 import XCTest
-import WeatherMan
+@testable import WeatherMan
 
 class WeatherFetcherTests: XCTestCase {
 

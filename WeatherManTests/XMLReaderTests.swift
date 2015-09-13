@@ -25,8 +25,7 @@ class XMLReaderTests: XCTestCase {
     func testParseString() {
 		
 		var xmlDictionary: Dictionary<NSObject, AnyObject>?
-		let bundle = NSBundle(forClass: self.dynamicType)
-		let path2 = bundle.pathForResource("simple.xml", ofType: nil)
+		let path2 = pathForResourceTest("simple.xml", ofType: nil)
 		if let path = path2 {
 			let xmlString = try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
 			if let xmlString = xmlString {
@@ -36,13 +35,11 @@ class XMLReaderTests: XCTestCase {
 		
 		XCTAssertNotNil(xmlDictionary, "Fail")
     }
-	
-	
+
 	func testParseWeatherData() {
 		
 		var xmlDictionary: Dictionary<NSObject, AnyObject>?
-		let bundle = NSBundle(forClass: self.dynamicType)
-		let path2 = bundle.pathForResource("string.xml", ofType: nil)
+		let path2 = pathForResourceTest("string.xml", ofType: nil)
 		if let path = path2 {
 			let xmlString = try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
 			if let xmlString = xmlString {
@@ -51,6 +48,12 @@ class XMLReaderTests: XCTestCase {
 		}
 		
 		XCTAssertNotNil(xmlDictionary, "Fail")
+	}
+	
+	func pathForResourceTest(name: String?, ofType ext: String?) -> String? {
+		let bundle = NSBundle(forClass: self.dynamicType)
+		let path2 = bundle.pathForResource(name, ofType: ext)
+		return path2
 	}
 	
 
