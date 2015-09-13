@@ -50,19 +50,19 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQ3-xd-vyY">
-                                            <rect key="frame" x="135" y="26" width="465" height="21"/>
+                                            <rect key="frame" x="135" y="21" width="465" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPm-dV-65M">
-                                            <rect key="frame" x="135" y="47" width="465" height="21"/>
+                                            <rect key="frame" x="135" y="42" width="465" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppB-8u-n8G">
-                                            <rect key="frame" x="135" y="68" width="465" height="21"/>
+                                            <rect key="frame" x="135" y="63" width="465" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -81,7 +81,7 @@
                                         <constraint firstItem="dQ3-xd-vyY" firstAttribute="leading" secondItem="UIF-Pv-1m2" secondAttribute="leading" id="khU-2z-QqX"/>
                                         <constraint firstItem="dQ3-xd-vyY" firstAttribute="trailing" secondItem="UIF-Pv-1m2" secondAttribute="trailing" id="nqu-bp-abA"/>
                                         <constraint firstItem="UIF-Pv-1m2" firstAttribute="trailing" secondItem="bE5-bC-sTI" secondAttribute="trailing" id="oSi-FL-DKO"/>
-                                        <constraint firstItem="dQ3-xd-vyY" firstAttribute="top" secondItem="UIF-Pv-1m2" secondAttribute="bottom" constant="5" id="ro4-uQ-cEz"/>
+                                        <constraint firstItem="dQ3-xd-vyY" firstAttribute="top" secondItem="UIF-Pv-1m2" secondAttribute="bottom" id="ro4-uQ-cEz"/>
                                         <constraint firstItem="UIF-Pv-1m2" firstAttribute="leading" secondItem="XwG-mS-a4S" secondAttribute="trailing" constant="15" id="t0x-ED-JfR"/>
                                         <constraint firstItem="ppB-8u-n8G" firstAttribute="top" secondItem="xPm-dV-65M" secondAttribute="bottom" id="wWl-be-i8J"/>
                                         <constraint firstItem="UIF-Pv-1m2" firstAttribute="top" secondItem="bE5-bC-sTI" secondAttribute="top" id="z8i-z5-N0o"/>
