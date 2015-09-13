@@ -43,14 +43,14 @@ public class WeatherFetcher: NSObject {
 		weekdayFormatter = NSDateFormatter()
 		weekdayFormatter.dateFormat = "EEEE"
 	}
-	
+
 	func fetchWeatherForZipCode(zipcode: String, startDate: NSDate, endDate:NSDate, completion: (Array<Weather>?, NSError?) -> Void) {
 		
-		let parameters = [ "zipCodeList" : zipcode, "format" : format, "numDays" : numDays ]
+		let parameters = [ "zipCodeList" : zipcode, "format" : format ]
 		let urlString = noaaURL + parameterStringFromDictionary(parameters)
 
 #if DEBUG
-		println("\(urlString)")
+	print("\(urlString)")
 #endif
 		
 		if let url = NSURL(string: urlString) {
@@ -58,29 +58,34 @@ public class WeatherFetcher: NSObject {
 			
 			let task = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
 				
+				var theError:NSError?
+				var resultList:Array<Weather>?
+				
 				if error == nil {
 					
-					var resultList:Array<Weather>
+					// The xml parser seems to fail intermittently with an 'Extra data at the end of the xml' error
+					// when using the NSData that's returned from dataTaskWithRequest and converting to a
+					// string seems to fix this.
+					// The NSData object is an OS_Dispatch_data object and maybe there is some incompatibility between that
+					// and the xml parser.
+					let dataAsString = String(data: data!, encoding: NSUTF8StringEncoding)
 					
-					if let dictionary = XMLReader.dictionaryForXMLData(data!) as? Dictionary<NSObject, NSObject> {
+					if let dictionary = XMLReader.dictionaryForXMLString(dataAsString!) as? Dictionary<NSObject, NSObject> {
 						// Handle error response from server for bad zip code
-						var err: NSError?
-						if self.isErrorResponse(dictionary, error: &err) {
-							completion(nil, err!)
-						} else {
+						if !self.isErrorResponse(dictionary, error: &theError) {
 							resultList = self.weatherListFromWeatherDictionary(dictionary)
-							completion(resultList, nil)
 						}
 					} else {
-						// TODO: Need to get the parse error
-						completion(nil, self.unknownError())
+						theError = self.unknownError()
 					}
-					
 				} else {
 					print("error : \(error)")
-					completion(nil, error)
+					theError = error
 				}
-				
+
+				dispatch_async(dispatch_get_main_queue()) {
+					completion(resultList, theError)
+				}
 			})
 			
 			task.resume()
