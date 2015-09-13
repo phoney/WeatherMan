@@ -44,11 +44,17 @@ class DetailViewController: UITableViewController {
 		
 		if let url = NSURL(string: weather.conditionsIconLink) {
 			cell.iconView.hnk_setImageFromURL(url)
+		} else {
+			cell.iconView.image = nil
 		}
 
 		return cell
 	}
-
+	
+	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return "Weather for " + detailItem!
+	}
+	
 	// MARK: - Weather
 	
 	func fetchWeather() {
