@@ -10,6 +10,7 @@
 		38A5FC6D1B799F930063174C /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A5FC6C1B799F930063174C /* XMLReader.m */; };
 		38A6B1411BA4EA45004E72BF /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A6B1401BA4EA45004E72BF /* WeatherCell.swift */; settings = {ASSET_TAGS = (); }; };
 		38A6B17F1BA5F55D004E72BF /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A6B17E1BA5F55D004E72BF /* AlertHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		38A6B1A11BA61875004E72BF /* Haneke.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38A6B19A1BA6183C004E72BF /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38E0E9421B769C3C00027EB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E0E9411B769C3C00027EB1 /* AppDelegate.swift */; };
 		38E0E9441B769C3C00027EB1 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E0E9431B769C3C00027EB1 /* MasterViewController.swift */; };
 		38E0E9461B769C3C00027EB1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E0E9451B769C3C00027EB1 /* DetailViewController.swift */; };
@@ -26,6 +27,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		38A6B1991BA6183C004E72BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38A6B1931BA6183B004E72BF /* Haneke.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A095C9561980418C00CD0F4C;
+			remoteInfo = Haneke;
+		};
+		38A6B19B1BA6183C004E72BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38A6B1931BA6183B004E72BF /* Haneke.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A095C9611980418C00CD0F4C;
+			remoteInfo = HanekeTests;
+		};
+		38A6B19D1BA6183C004E72BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38A6B1931BA6183B004E72BF /* Haneke.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A0026E9A19C9BFBC004DE0C6;
+			remoteInfo = HanekeDemo;
+		};
+		38A6B19F1BA61859004E72BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38A6B1931BA6183B004E72BF /* Haneke.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A095C9551980418C00CD0F4C;
+			remoteInfo = Haneke;
+		};
 		38E0E9541B769C3C00027EB1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 38E0E9341B769C3C00027EB1 /* Project object */;
@@ -35,12 +64,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		38A6B1901BA5FD6D004E72BF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				38A6B1A11BA61875004E72BF /* Haneke.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		38A5FC6A1B799F920063174C /* WeatherMan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeatherMan-Bridging-Header.h"; sourceTree = "<group>"; };
 		38A5FC6B1B799F930063174C /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLReader.h; path = ThirdParty/XMLReader/XMLReader.h; sourceTree = "<group>"; };
 		38A5FC6C1B799F930063174C /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLReader.m; path = ThirdParty/XMLReader/XMLReader.m; sourceTree = "<group>"; };
 		38A6B1401BA4EA45004E72BF /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherCell.swift; path = Source/WeatherCell.swift; sourceTree = "<group>"; };
 		38A6B17E1BA5F55D004E72BF /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertHelper.swift; path = Source/AlertHelper.swift; sourceTree = "<group>"; };
+		38A6B1931BA6183B004E72BF /* Haneke.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Haneke.xcodeproj; path = ThirdParty/HanekeSwift/Haneke.xcodeproj; sourceTree = "<group>"; };
 		38E0E93C1B769C3C00027EB1 /* WeatherMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38E0E9401B769C3C00027EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38E0E9411B769C3C00027EB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,9 +133,20 @@
 		38A5FC6F1B799FA50063174C /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				38A6B1931BA6183B004E72BF /* Haneke.xcodeproj */,
 				38A5FC6E1B799F9C0063174C /* XMLReader */,
 			);
 			name = ThirdParty;
+			sourceTree = "<group>";
+		};
+		38A6B1941BA6183B004E72BF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				38A6B19A1BA6183C004E72BF /* Haneke.framework */,
+				38A6B19C1BA6183C004E72BF /* HanekeTests.xctest */,
+				38A6B19E1BA6183C004E72BF /* HanekeDemo.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		38E0E9331B769C3C00027EB1 = {
@@ -172,10 +226,12 @@
 				38E0E9381B769C3C00027EB1 /* Sources */,
 				38E0E9391B769C3C00027EB1 /* Frameworks */,
 				38E0E93A1B769C3C00027EB1 /* Resources */,
+				38A6B1901BA5FD6D004E72BF /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				38A6B1A01BA61859004E72BF /* PBXTargetDependency */,
 			);
 			name = WeatherMan;
 			productName = WeatherMan;
@@ -231,6 +287,12 @@
 			mainGroup = 38E0E9331B769C3C00027EB1;
 			productRefGroup = 38E0E93D1B769C3C00027EB1 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 38A6B1941BA6183B004E72BF /* Products */;
+					ProjectRef = 38A6B1931BA6183B004E72BF /* Haneke.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				38E0E93B1B769C3C00027EB1 /* WeatherMan */,
@@ -238,6 +300,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		38A6B19A1BA6183C004E72BF /* Haneke.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Haneke.framework;
+			remoteRef = 38A6B1991BA6183C004E72BF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		38A6B19C1BA6183C004E72BF /* HanekeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = HanekeTests.xctest;
+			remoteRef = 38A6B19B1BA6183C004E72BF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		38A6B19E1BA6183C004E72BF /* HanekeDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = HanekeDemo.app;
+			remoteRef = 38A6B19D1BA6183C004E72BF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		38E0E93A1B769C3C00027EB1 /* Resources */ = {
@@ -290,6 +376,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		38A6B1A01BA61859004E72BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Haneke;
+			targetProxy = 38A6B19F1BA61859004E72BF /* PBXContainerItemProxy */;
+		};
 		38E0E9551B769C3C00027EB1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 38E0E93B1B769C3C00027EB1 /* WeatherMan */;

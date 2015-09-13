@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class DetailViewController: UITableViewController {
 
@@ -40,6 +41,10 @@ class DetailViewController: UITableViewController {
 		cell.forecastLabel.text = weather.weatherSummary
 		cell.highTempLabel.text = "High " + String(weather.maxTemp)
 		cell.lowTempLabel.text = "Low " + String(weather.minTemp)
+		
+		if let url = NSURL(string: weather.conditionsIconLink) {
+			cell.iconView.hnk_setImageFromURL(url)
+		}
 
 		return cell
 	}
@@ -54,19 +59,14 @@ class DetailViewController: UITableViewController {
 		weatherFetcher.fetchWeatherForZipCode(zipcode, startDate: startDate, endDate: endDate, completion: { (result: Array<Weather>?, error: NSError?) -> Void in
 			
 			if (error == nil) {
-				dispatch_async(dispatch_get_main_queue()) {
-					self.objects = result!
-					self.tableView.reloadData()
-				}
+				self.objects = result!
+				self.tableView.reloadData()
 			} else {
-				// TODO: Display error alert 
-				dispatch_async(dispatch_get_main_queue()) {
-					self.objects = [Weather]()
-					self.tableView.reloadData()
+				self.objects = [Weather]()
+				self.tableView.reloadData()
 
-					print(error!)
-					AlertHelper.showErrorAlert(error!)
-				}
+				print(error!)
+				AlertHelper.showErrorAlert(error!)
 			}
 		})
 	}
