@@ -8,6 +8,8 @@
 
 import UIKit
 
+let zipcodeKey = "zipcodeKey"
+
 class MasterViewController: UIViewController, UITextFieldDelegate {
 
 	@IBOutlet weak var zipcodeTextField: UITextField!
@@ -30,6 +32,7 @@ class MasterViewController: UIViewController, UITextFieldDelegate {
 			self.detailViewController = navigationController.topViewController as? DetailViewController
 		}
 		
+		restoreZipCode()
 		updateFetchWeatherButton()
 	}
 
@@ -58,9 +61,29 @@ class MasterViewController: UIViewController, UITextFieldDelegate {
 		updateFetchWeatherButton()
 	}
 	
+	// MARK: - ZipCode
+	
 	func isValidZipCode(zipcode: String ) -> Bool {
 		let length = zipcode.characters.count
 		return length == 5
+	}
+	
+	func saveZipCode() {
+		if let zipcode = self.zipcodeTextField.text {
+			if isValidZipCode(zipcode) {
+				let userDefaults = NSUserDefaults.standardUserDefaults()
+				userDefaults.setObject(zipcode, forKey: zipcodeKey)
+			}
+		}
+	}
+
+	func restoreZipCode() {
+		let userDefaults = NSUserDefaults.standardUserDefaults()
+		if let zipcode = userDefaults.stringForKey(zipcodeKey) {
+			if isValidZipCode(zipcode) {
+				zipcodeTextField.text = zipcode
+			}
+		}
 	}
 
 	// MARK: - Segues
@@ -72,6 +95,7 @@ class MasterViewController: UIViewController, UITextFieldDelegate {
 		        controller.detailItem = zipcode
 		        controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
 		        controller.navigationItem.leftItemsSupplementBackButton = true
+				saveZipCode()
 		    }
 		}
 	}
