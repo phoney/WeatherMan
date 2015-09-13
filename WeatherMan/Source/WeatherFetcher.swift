@@ -62,9 +62,15 @@ public class WeatherFetcher: NSObject {
 					
 					var resultList:Array<Weather>
 					
-					if let dictionary = XMLReader.dictionaryForXMLData(data) as? Dictionary<NSObject, NSObject> {
-						resultList = self.weatherListFromWeatherDictionary(dictionary)
-						completion(resultList, nil)
+					if let dictionary = XMLReader.dictionaryForXMLData(data!) as? Dictionary<NSObject, NSObject> {
+						// Handle error response from server for bad zip code
+						var err: NSError?
+						if self.isErrorResponse(dictionary, error: &err) {
+							completion(nil, err!)
+						} else {
+							resultList = self.weatherListFromWeatherDictionary(dictionary)
+							completion(resultList, nil)
+						}
 					} else {
 						// TODO: Need to get the parse error
 						completion(nil, self.unknownError())
@@ -80,11 +86,39 @@ public class WeatherFetcher: NSObject {
 			task.resume()
 		}
 	}
+
+	/*
+		{
+			error =     {
+				h2 = ERROR;
+				pre = "Point with latitude \"\" longitude \"\" is not on an NDFD grid";
+			};
+		}
+	*/
 	
-	func unknownError() -> NSError {
-		return NSError(domain: "Weather", code: -1, userInfo: ["userInfo" : "Unknown Error"])
+	func isErrorResponse(weatherDictionary: Dictionary<NSObject, NSObject>, error: NSErrorPointer) -> Bool {
+		if let errorDictionary = weatherDictionary["error"] as? Dictionary<NSObject, NSObject> {
+			if let errorText = errorDictionary["pre"] {
+				if error != nil {
+					error.memory = NSError(domain: "Weather", code: -2, userInfo: [NSLocalizedDescriptionKey : errorText])
+				}
+			} else {
+				if error != nil {
+					error.memory = unknownError()
+				}
+			}
+			
+			return true
+		}
+		return false
 	}
 	
+	func unknownError() -> NSError {
+		return NSError(domain: "Weather", code: -1, userInfo: [NSLocalizedDescriptionKey : "Unknown Error"])
+	}
+	
+	// MARK: - XML spelunking
+
 	func weatherListFromWeatherDictionary(weatherDictionary: Dictionary<NSObject, NSObject>) -> Array<Weather> {
 		
 		let parameters = parametersFromWeatherDictionary(weatherDictionary)
@@ -189,6 +223,7 @@ public class WeatherFetcher: NSObject {
 	}
 	
 	func dateListFromDate(date: NSDate, numberOfDays: Int) -> Array<String> {
+		assert(numberOfDays > 0)
 		var dates:Array<String> = []
 		let calendar = NSCalendar.currentCalendar()
 		let calendarUnits: NSCalendarUnit = [.Day, .Month, .Year]
@@ -215,7 +250,8 @@ public class WeatherFetcher: NSObject {
 		return dates
 	}
 	
-	// For debugging
+	// MARK: - Debugging
+
 	func saveXMLToFile(data:NSData) {
 		
 		let result = NSString(data: data, encoding: NSUTF8StringEncoding)

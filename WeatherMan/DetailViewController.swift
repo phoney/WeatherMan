@@ -10,27 +10,15 @@ import UIKit
 
 class DetailViewController: UITableViewController {
 
+	var detailItem: String?
 	var objects = [Weather]()
-	
-	var weatherFetcher:WeatherFetcher?
-
-	var detailItem: String? {
-		didSet {
-		    // Update the view.
-			print("zipcode \(detailItem)")
-			self.fetchWeather()
-		    self.configureView()
-		}
-	}
-
-	func configureView() {
-		// Update the user interface for the detail item.
-	}
+	lazy var weatherFetcher:WeatherFetcher = WeatherFetcher()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		self.configureView()
+		print("zipcode \(detailItem)")
+		self.fetchWeather()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -59,15 +47,11 @@ class DetailViewController: UITableViewController {
 	// MARK: - Weather
 	
 	func fetchWeather() {
-		if weatherFetcher == nil {
-			weatherFetcher = WeatherFetcher()
-		}
-		
 		let startDate = NSDate()
 		let endDate = NSDate()
 		let zipcode = detailItem!
 		
-		weatherFetcher?.fetchWeatherForZipCode(zipcode, startDate: startDate, endDate: endDate, completion: { (result: Array<Weather>?, error: NSError?) -> Void in
+		weatherFetcher.fetchWeatherForZipCode(zipcode, startDate: startDate, endDate: endDate, completion: { (result: Array<Weather>?, error: NSError?) -> Void in
 			
 			if (error == nil) {
 				dispatch_async(dispatch_get_main_queue()) {
@@ -76,11 +60,16 @@ class DetailViewController: UITableViewController {
 				}
 			} else {
 				// TODO: Display error alert 
+				dispatch_async(dispatch_get_main_queue()) {
+					self.objects = [Weather]()
+					self.tableView.reloadData()
+
+					print(error!)
+					AlertHelper.showErrorAlert(error!)
+				}
 			}
-			
 		})
 	}
-	
 
 }
 
