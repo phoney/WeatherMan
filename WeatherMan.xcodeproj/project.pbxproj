@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		38A5FC6D1B799F930063174C /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A5FC6C1B799F930063174C /* XMLReader.m */; };
 		38A5FC701B79A4350063174C /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A5FC6C1B799F930063174C /* XMLReader.m */; };
+		38A6B1411BA4EA45004E72BF /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A6B1401BA4EA45004E72BF /* WeatherCell.swift */; settings = {ASSET_TAGS = (); }; };
 		38E0E9421B769C3C00027EB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E0E9411B769C3C00027EB1 /* AppDelegate.swift */; };
 		38E0E9441B769C3C00027EB1 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E0E9431B769C3C00027EB1 /* MasterViewController.swift */; };
 		38E0E9461B769C3C00027EB1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E0E9451B769C3C00027EB1 /* DetailViewController.swift */; };
@@ -38,6 +39,7 @@
 		38A5FC6A1B799F920063174C /* WeatherMan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeatherMan-Bridging-Header.h"; sourceTree = "<group>"; };
 		38A5FC6B1B799F930063174C /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLReader.h; path = ThirdParty/XMLReader/XMLReader.h; sourceTree = "<group>"; };
 		38A5FC6C1B799F930063174C /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLReader.m; path = ThirdParty/XMLReader/XMLReader.m; sourceTree = "<group>"; };
+		38A6B1401BA4EA45004E72BF /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherCell.swift; path = Source/WeatherCell.swift; sourceTree = "<group>"; };
 		38E0E93C1B769C3C00027EB1 /* WeatherMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38E0E9401B769C3C00027EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38E0E9411B769C3C00027EB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				38E0E9451B769C3C00027EB1 /* DetailViewController.swift */,
 				38E0E9631B76B73400027EB1 /* WeatherFetcher.swift */,
 				38E0E9651B76B95600027EB1 /* Weather.swift */,
+				38A6B1401BA4EA45004E72BF /* WeatherCell.swift */,
 				38A5FC6F1B799FA50063174C /* ThirdParty */,
 				38E0E9471B769C3C00027EB1 /* Main.storyboard */,
 				38E0E94A1B769C3C00027EB1 /* Images.xcassets */,
@@ -267,6 +270,7 @@
 				38E0E9421B769C3C00027EB1 /* AppDelegate.swift in Sources */,
 				38E0E9661B76B95600027EB1 /* Weather.swift in Sources */,
 				38A5FC6D1B799F930063174C /* XMLReader.m in Sources */,
+				38A6B1411BA4EA45004E72BF /* WeatherCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UITableViewController {
 
-	var objects = [AnyObject]()
+	var objects = [Weather]()
 	
 	var weatherFetcher:WeatherFetcher?
 
@@ -45,10 +45,14 @@ class DetailViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+		let cell = tableView.dequeueReusableCellWithIdentifier("WeatherCell", forIndexPath: indexPath) as! WeatherCell
 		
-		let object = objects[indexPath.row] as! NSDate
-		cell.textLabel!.text = object.description
+		let weather = objects[indexPath.row]
+		cell.timeLabel.text = weather.time
+		cell.forecastLabel.text = weather.weatherSummary
+		cell.highTempLabel.text = "High " + String(weather.maxTemp)
+		cell.lowTempLabel.text = "Low " + String(weather.minTemp)
+
 		return cell
 	}
 
@@ -66,9 +70,12 @@ class DetailViewController: UITableViewController {
 		weatherFetcher?.fetchWeatherForZipCode(zipcode, startDate: startDate, endDate: endDate, completion: { (result: Array<Weather>?, error: NSError?) -> Void in
 			
 			if (error == nil) {
-				
+				dispatch_async(dispatch_get_main_queue()) {
+					self.objects = result!
+					self.tableView.reloadData()
+				}
 			} else {
-
+				// TODO: Display error alert 
 			}
 			
 		})

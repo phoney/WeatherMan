@@ -22,6 +22,7 @@ public class WeatherFetcher: NSObject {
 	let noaaURL = "http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdBrowserClientByDay.php"
 	var session:NSURLSession
 	var dateFormatter:NSDateFormatter!
+	var weekdayFormatter:NSDateFormatter!
 
 	// example
 	// http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdXMLclient.php?zipCodeList=40324&product=glance&begin=2015-08-08T00:00:00&end=2015-08-10T00:00:00&maxt=maxt&mint=mint&temp=temp&wx=wx
@@ -38,6 +39,9 @@ public class WeatherFetcher: NSObject {
 		
 		dateFormatter = NSDateFormatter()
 		dateFormatter.dateFormat = "yyyy-MM-ddTHH:mm:ss"
+
+		weekdayFormatter = NSDateFormatter()
+		weekdayFormatter.dateFormat = "EEEE"
 	}
 	
 	public func fetchWeatherForZipCode(zipcode: String, startDate: NSDate, endDate:NSDate, completion: (Array<Weather>?, NSError?) -> Void) {
@@ -63,7 +67,7 @@ public class WeatherFetcher: NSObject {
 						completion(resultList, nil)
 					} else {
 						// TODO: Need to get the parse error
-						completion(nil, nil)
+						completion(nil, self.unknownError())
 					}
 					
 				} else {
@@ -77,6 +81,10 @@ public class WeatherFetcher: NSObject {
 		}
 	}
 	
+	func unknownError() -> NSError {
+		return NSError(domain: "Weather", code: -1, userInfo: ["userInfo" : "Unknown Error"])
+	}
+	
 	func weatherListFromWeatherDictionary(weatherDictionary: Dictionary<NSObject, NSObject>) -> Array<Weather> {
 		
 		let parameters = parametersFromWeatherDictionary(weatherDictionary)
@@ -84,6 +92,7 @@ public class WeatherFetcher: NSObject {
 		let minimumTemperatures = temperatureFromParametersDictionary(parameters, index: 1)
 		let iconLinks = iconLinksFromParametersDictionary(parameters)
 		let weatherSummaries = weatherSummariesFromParametersDictionary(parameters)
+		let dayNames = dateListFromToday()
 		
 		var resultList:Array<Weather> = []
 		let count = minimumTemperatures.count - 1
@@ -108,6 +117,8 @@ public class WeatherFetcher: NSObject {
 					weather.weatherSummary = weatherSummary as String
 				}
 			}
+			
+			weather.time = dayNames[i]
 
 			resultList.append(weather)
 		}
@@ -175,6 +186,29 @@ public class WeatherFetcher: NSObject {
 		}
 		
 		return parameterString
+	}
+	
+	func dateListFromToday() -> Array<String> {
+		var dates:Array<String> = []
+		let calendar = NSCalendar.currentCalendar()
+		let calendarUnits: NSCalendarUnit = [.Day, .Month, .Year]
+		var day = NSDate()
+
+		for _ in 0...10 {
+			let dayOfWeek = weekdayFormatter.stringFromDate(day)
+			dates.append(dayOfWeek)
+
+			let dayInComponents = calendar.components(calendarUnits, fromDate: day)
+			let dayOfMonth = dayInComponents.valueForComponent(.Day)
+			
+			dayInComponents.setValue(dayOfMonth + 1, forComponent: .Day)
+			day = calendar.dateFromComponents(dayInComponents)!
+		}
+		
+		dates[0] = "Today"
+		dates[1] = "Tomorrow"
+		
+		return dates
 	}
 	
 	// For debugging

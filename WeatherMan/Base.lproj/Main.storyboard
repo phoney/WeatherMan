@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
         <!--Master-->
@@ -23,16 +24,76 @@
         <scene sceneID="RWE-6e-5xM">
             <objects>
                 <tableViewController id="9ZF-68-ULj" customClass="DetailViewController" customModule="WeatherMan" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eV0-7x-VXw">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" id="eV0-7x-VXw">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="k8k-wc-Wji">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherCell" rowHeight="110" id="k8k-wc-Wji" customClass="WeatherCell" customModule="WeatherMan" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="86" width="600" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k8k-wc-Wji" id="bE5-bC-sTI">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="109"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XwG-mS-a4S">
+                                            <rect key="frame" x="20" y="4" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="At4-uj-OlW"/>
+                                                <constraint firstAttribute="height" constant="100" id="RAv-mY-HLT"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIF-Pv-1m2">
+                                            <rect key="frame" x="135" y="0.0" width="465" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQ3-xd-vyY">
+                                            <rect key="frame" x="135" y="26" width="465" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPm-dV-65M">
+                                            <rect key="frame" x="135" y="47" width="465" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppB-8u-n8G">
+                                            <rect key="frame" x="135" y="68" width="465" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="XwG-mS-a4S" firstAttribute="leading" secondItem="bE5-bC-sTI" secondAttribute="leading" constant="20" id="1e1-CK-Q0A"/>
+                                        <constraint firstItem="ppB-8u-n8G" firstAttribute="leading" secondItem="UIF-Pv-1m2" secondAttribute="leading" id="Adc-1C-Bk5"/>
+                                        <constraint firstItem="ppB-8u-n8G" firstAttribute="top" secondItem="xPm-dV-65M" secondAttribute="bottom" id="Asy-ij-FX8"/>
+                                        <constraint firstItem="xPm-dV-65M" firstAttribute="trailing" secondItem="dQ3-xd-vyY" secondAttribute="trailing" id="GxA-QU-Caq"/>
+                                        <constraint firstItem="xPm-dV-65M" firstAttribute="leading" secondItem="dQ3-xd-vyY" secondAttribute="leading" id="H0f-Ls-veI"/>
+                                        <constraint firstItem="ppB-8u-n8G" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="bE5-bC-sTI" secondAttribute="bottom" id="Yjg-R9-28K"/>
+                                        <constraint firstItem="XwG-mS-a4S" firstAttribute="centerY" secondItem="bE5-bC-sTI" secondAttribute="centerY" id="cvy-dy-iIE"/>
+                                        <constraint firstItem="ppB-8u-n8G" firstAttribute="trailing" secondItem="UIF-Pv-1m2" secondAttribute="trailing" id="eov-sF-k1d"/>
+                                        <constraint firstItem="xPm-dV-65M" firstAttribute="top" secondItem="dQ3-xd-vyY" secondAttribute="bottom" id="ew6-R4-f7X"/>
+                                        <constraint firstItem="dQ3-xd-vyY" firstAttribute="leading" secondItem="UIF-Pv-1m2" secondAttribute="leading" id="khU-2z-QqX"/>
+                                        <constraint firstItem="dQ3-xd-vyY" firstAttribute="trailing" secondItem="UIF-Pv-1m2" secondAttribute="trailing" id="nqu-bp-abA"/>
+                                        <constraint firstItem="UIF-Pv-1m2" firstAttribute="trailing" secondItem="bE5-bC-sTI" secondAttribute="trailing" id="oSi-FL-DKO"/>
+                                        <constraint firstItem="dQ3-xd-vyY" firstAttribute="top" secondItem="UIF-Pv-1m2" secondAttribute="bottom" constant="5" id="ro4-uQ-cEz"/>
+                                        <constraint firstItem="UIF-Pv-1m2" firstAttribute="leading" secondItem="XwG-mS-a4S" secondAttribute="trailing" constant="15" id="t0x-ED-JfR"/>
+                                        <constraint firstItem="ppB-8u-n8G" firstAttribute="top" secondItem="xPm-dV-65M" secondAttribute="bottom" id="wWl-be-i8J"/>
+                                        <constraint firstItem="UIF-Pv-1m2" firstAttribute="top" secondItem="bE5-bC-sTI" secondAttribute="top" id="z8i-z5-N0o"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="forecastLabel" destination="dQ3-xd-vyY" id="vi3-ny-nXd"/>
+                                    <outlet property="highTempLabel" destination="xPm-dV-65M" id="6rP-YZ-MGK"/>
+                                    <outlet property="iconView" destination="XwG-mS-a4S" id="sO4-aj-ErF"/>
+                                    <outlet property="lowTempLabel" destination="ppB-8u-n8G" id="L3D-bw-1Yf"/>
+                                    <outlet property="timeLabel" destination="UIF-Pv-1m2" id="Aig-L5-WZO"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -85,13 +146,13 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zip Code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1o5-LY-udp">
-                                <rect key="frame" x="159" y="168" width="71" height="21"/>
+                                <rect key="frame" x="160" y="168" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GoR-H1-gFP">
-                                <rect key="frame" x="257" y="237" width="86" height="30"/>
+                                <rect key="frame" x="257" y="237" width="87" height="30"/>
                                 <state key="normal" title="Get Weather">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
