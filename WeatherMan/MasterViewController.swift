@@ -5,6 +5,7 @@
 //  Created by Brian Stern on 8/8/15.
 //  Copyright (c) 2015 Brian Stern. All rights reserved.
 //
+// Simple UI to enter a zipcode and start a request for the weather data.
 
 import UIKit
 

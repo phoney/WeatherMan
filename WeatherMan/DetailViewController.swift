@@ -5,6 +5,7 @@
 //  Created by Brian Stern on 8/8/15.
 //  Copyright (c) 2015 Brian Stern. All rights reserved.
 //
+//	TableView of the weather forecast for the next seven days.
 
 import UIKit
 import Haneke

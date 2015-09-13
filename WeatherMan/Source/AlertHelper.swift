@@ -5,6 +5,7 @@
 //  Created by Brian Stern on 9/13/15.
 //  Copyright © 2015 Brian Stern. All rights reserved.
 //
+//	Helper class to display alerts.
 
 import UIKit
 

@@ -5,6 +5,7 @@
 //  Created by Brian Stern on 9/12/15.
 //  Copyright © 2015 Brian Stern. All rights reserved.
 //
+// UITableViewCell subclass to display the weather forecast for a day.
 
 import UIKit
 
@@ -15,8 +16,6 @@ class WeatherCell: UITableViewCell {
 	@IBOutlet weak var forecastLabel: UILabel!
 	@IBOutlet weak var highTempLabel: UILabel!
 	@IBOutlet weak var lowTempLabel: UILabel!
-
-
 	
 	override func awakeFromNib() {
         super.awakeFromNib()

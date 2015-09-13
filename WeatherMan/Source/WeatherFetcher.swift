@@ -6,6 +6,10 @@
 //  Copyright (c) 2015 Brian Stern. All rights reserved.
 //
 // http://graphical.weather.gov/xml/rest.php
+// There are a number of different REST endpoints available at the NOAA site.
+// BrowserClientByDay is the simplest one. Others can provide more data.
+// This class fetches the data and parses the resulting xml into an array 
+// of Weather objects.
 
 import UIKit
 
