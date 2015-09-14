@@ -9,7 +9,7 @@
 
 import UIKit
 
-let zipcodeKey = "zipcodeKey"
+private let zipcodeKey = "zipcodeKey"
 
 class MasterViewController: UIViewController, UITextFieldDelegate {
 
@@ -42,7 +42,7 @@ class MasterViewController: UIViewController, UITextFieldDelegate {
 		// Dispose of any resources that can be recreated.
 	}
 	
-	func updateFetchWeatherButton() {
+	private func updateFetchWeatherButton() {
 		self.fetchWeatherButton.enabled = isValidZipCode(zipcodeTextField.text!)
 	}
 
@@ -64,12 +64,12 @@ class MasterViewController: UIViewController, UITextFieldDelegate {
 	
 	// MARK: - ZipCode
 	
-	func isValidZipCode(zipcode: String ) -> Bool {
+	private func isValidZipCode(zipcode: String ) -> Bool {
 		let length = zipcode.characters.count
 		return length == 5
 	}
 	
-	func saveZipCode() {
+	private func saveZipCode() {
 		if let zipcode = self.zipcodeTextField.text {
 			if isValidZipCode(zipcode) {
 				let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -78,7 +78,7 @@ class MasterViewController: UIViewController, UITextFieldDelegate {
 		}
 	}
 
-	func restoreZipCode() {
+	private func restoreZipCode() {
 		let userDefaults = NSUserDefaults.standardUserDefaults()
 		if let zipcode = userDefaults.stringForKey(zipcodeKey) {
 			if isValidZipCode(zipcode) {
