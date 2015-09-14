@@ -12,15 +12,19 @@ import Haneke
 
 class DetailViewController: UITableViewController {
 
-	var detailItem: String?
 	var objects = [Weather]()
 	lazy var weatherFetcher:WeatherFetcher = WeatherFetcher()
+	var detailItem: String? = nil {
+		didSet {
+			print("zipcode \(detailItem)")
+			self.fetchWeather()
+		}
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		print("zipcode \(detailItem)")
-		self.fetchWeather()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -53,29 +57,35 @@ class DetailViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return "Weather for " + detailItem!
+		if let zipcode = detailItem {
+			return "Weather for " + zipcode
+		}
+		return nil
 	}
 	
 	// MARK: - Weather
 	
 	func fetchWeather() {
-		let startDate = NSDate()
-		let endDate = NSDate()
-		let zipcode = detailItem!
-		
-		weatherFetcher.fetchWeatherForZipCode(zipcode, startDate: startDate, endDate: endDate, completion: { (result: Array<Weather>?, error: NSError?) -> Void in
+		// on iPhone the DetailViewController isn't shown without a valid zipcode
+		// on iPad the DetailViewController is always shown
+		if let zipcode = detailItem {
+			let startDate = NSDate()
+			let endDate = NSDate()
 			
-			if (error == nil) {
-				self.objects = result!
-				self.tableView.reloadData()
-			} else {
-				self.objects = [Weather]()
-				self.tableView.reloadData()
+			weatherFetcher.fetchWeatherForZipCode(zipcode, startDate: startDate, endDate: endDate, completion: { (result: Array<Weather>?, error: NSError?) -> Void in
+				
+				if (error == nil) {
+					self.objects = result!
+					self.tableView.reloadData()
+				} else {
+					self.objects = [Weather]()
+					self.tableView.reloadData()
 
-				print(error!)
-				AlertHelper.showErrorAlert(error!)
-			}
-		})
+					print(error!)
+					AlertHelper.showErrorAlert(error!)
+				}
+			})
+		}
 	}
 
 }

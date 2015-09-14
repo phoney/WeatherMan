@@ -151,19 +151,28 @@ public class WeatherFetcher: NSObject {
 				weather.maxTemp = maxTemp.integerValue
 			}
 
-			if let conditionsIconLink = iconLinks[i] as? NSString {
-				weather.conditionsIconLink = conditionsIconLink as String
+			if (i < iconLinks.count) {
+				// Occasionally the icon links and weather summaries are missing from the xml
+				if let conditionsIconLink = iconLinks[i] as? NSString {
+					weather.conditionsIconLink = conditionsIconLink as String
+				}
 			}
 
-			if let weatherSummary = weatherSummaries[i] as? Dictionary<NSObject, NSObject> {
-				if let weatherSummary = weatherSummary["@weather-summary"] as? NSString {
-					weather.weatherSummary = weatherSummary as String
+			if (i < weatherSummaries.count) {
+				if let weatherSummary = weatherSummaries[i] as? Dictionary<NSObject, NSObject> {
+					if let weatherSummary = weatherSummary["@weather-summary"] as? NSString {
+						weather.weatherSummary = weatherSummary as String
+					}
 				}
 			}
 			
 			weather.time = dayNames[i]
 
-			resultList.append(weather)
+			if (weather.maxTemp != 0 && weather.minTemp != 0) {
+				// Sometimes the last weather data doesn't have the maxTemp or minTemp
+				//  so it's better not to display it
+				resultList.append(weather)				
+			}
 		}
 		
 		return resultList
