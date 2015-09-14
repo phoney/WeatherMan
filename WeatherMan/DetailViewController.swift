@@ -12,14 +12,14 @@ import Haneke
 
 class DetailViewController: UITableViewController {
 
-	var objects = [Weather]()
-	lazy var weatherFetcher:WeatherFetcher = WeatherFetcher()
 	var detailItem: String? = nil {
 		didSet {
 			print("zipcode \(detailItem)")
 			self.fetchWeather()
 		}
 	}
+	private var objects = [Weather]()
+	private lazy var weatherFetcher:WeatherFetcher = WeatherFetcher()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -65,7 +65,7 @@ class DetailViewController: UITableViewController {
 	
 	// MARK: - Weather
 	
-	func fetchWeather() {
+	private func fetchWeather() {
 		// on iPhone the DetailViewController isn't shown without a valid zipcode
 		// on iPad the DetailViewController is always shown
 		if let zipcode = detailItem {

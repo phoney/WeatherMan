@@ -24,9 +24,9 @@ let numDays = "10"
 public class WeatherFetcher: NSObject {
 	
 	let noaaURL = "http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdBrowserClientByDay.php"
-	var session:NSURLSession
-	var dateFormatter:NSDateFormatter!
-	var weekdayFormatter:NSDateFormatter!
+	private var session:NSURLSession
+	private var dateFormatter:NSDateFormatter!
+	private var weekdayFormatter:NSDateFormatter!
 
 	// example
 	// http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdXMLclient.php?zipCodeList=40324&product=glance&begin=2015-08-08T00:00:00&end=2015-08-10T00:00:00&maxt=maxt&mint=mint&temp=temp&wx=wx
@@ -39,7 +39,7 @@ public class WeatherFetcher: NSObject {
 		buildDateFormatter()
 	}
 	
-	func buildDateFormatter() {
+	private func buildDateFormatter() {
 		
 		dateFormatter = NSDateFormatter()
 		dateFormatter.dateFormat = "yyyy-MM-ddTHH:mm:ss"
@@ -105,7 +105,7 @@ public class WeatherFetcher: NSObject {
 		}
 	*/
 	
-	func isErrorResponse(weatherDictionary: Dictionary<NSObject, NSObject>, error: NSErrorPointer) -> Bool {
+	private func isErrorResponse(weatherDictionary: Dictionary<NSObject, NSObject>, error: NSErrorPointer) -> Bool {
 		if let errorDictionary = weatherDictionary["error"] as? Dictionary<NSObject, NSObject> {
 			if let errorText = errorDictionary["pre"] {
 				if error != nil {
@@ -122,13 +122,13 @@ public class WeatherFetcher: NSObject {
 		return false
 	}
 	
-	func unknownError() -> NSError {
+	private func unknownError() -> NSError {
 		return NSError(domain: "Weather", code: -1, userInfo: [NSLocalizedDescriptionKey : "Unknown Error"])
 	}
 	
 	// MARK: - XML spelunking
 
-	func weatherListFromWeatherDictionary(weatherDictionary: Dictionary<NSObject, NSObject>) -> Array<Weather> {
+	private func weatherListFromWeatherDictionary(weatherDictionary: Dictionary<NSObject, NSObject>) -> Array<Weather> {
 		
 		let parameters = parametersFromWeatherDictionary(weatherDictionary)
 		let maximumTemperatures = temperatureFromParametersDictionary(parameters, index: 0)
@@ -178,7 +178,7 @@ public class WeatherFetcher: NSObject {
 		return resultList
 	}
 	
-	func parametersFromWeatherDictionary(weatherDictionary: Dictionary<NSObject, NSObject>) -> Dictionary<NSObject, NSObject> {
+	private func parametersFromWeatherDictionary(weatherDictionary: Dictionary<NSObject, NSObject>) -> Dictionary<NSObject, NSObject> {
 		if let dwml = weatherDictionary["dwml"] as? Dictionary<NSObject, NSObject> {
 			// Convert Dictionary to array of Weather
 			if let data:Dictionary<NSObject, NSObject> = dwml["data"] as? Dictionary<NSObject, NSObject> {
@@ -191,7 +191,7 @@ public class WeatherFetcher: NSObject {
 		return [:]
 	}
 
-	func temperatureFromParametersDictionary(parameters: Dictionary<NSObject, NSObject>, index:Int) -> NSArray {
+	private func temperatureFromParametersDictionary(parameters: Dictionary<NSObject, NSObject>, index:Int) -> NSArray {
 		if let temperatures = parameters["temperature"] as? NSArray {
 			if (temperatures.count > index && index >= 0) {
 				if let temperatureInfo = temperatures[index] as? Dictionary<NSObject, NSObject> {
@@ -205,7 +205,7 @@ public class WeatherFetcher: NSObject {
 		return []
 	}
 
-	func iconLinksFromParametersDictionary(parameters: Dictionary<NSObject, NSObject>) -> NSArray {
+	private func iconLinksFromParametersDictionary(parameters: Dictionary<NSObject, NSObject>) -> NSArray {
 		if let conditions = parameters["conditions-icon"] as? NSDictionary {
 			if let iconLinks = conditions["icon-link"] as? NSArray {
 				return iconLinks
@@ -215,7 +215,7 @@ public class WeatherFetcher: NSObject {
 		return []
 	}
 
-	func weatherSummariesFromParametersDictionary(parameters: Dictionary<NSObject, NSObject>) -> NSArray {
+	private func weatherSummariesFromParametersDictionary(parameters: Dictionary<NSObject, NSObject>) -> NSArray {
 		if let weather = parameters["weather"] as? NSDictionary {
 			if let weatherSummaries = weather["weather-conditions"] as? NSArray {
 				return weatherSummaries
@@ -270,7 +270,7 @@ public class WeatherFetcher: NSObject {
 	
 	// MARK: - Debugging
 
-	func saveXMLToFile(data:NSData) {
+	private func saveXMLToFile(data:NSData) {
 		
 		let result = NSString(data: data, encoding: NSUTF8StringEncoding)
 		
