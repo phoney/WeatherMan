@@ -96,6 +96,16 @@ class MasterViewController: UIViewController, UITextFieldDelegate {
 		        controller.detailItem = zipcode
 		        controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
 		        controller.navigationItem.leftItemsSupplementBackButton = true
+				
+				if self.splitViewController?.displayMode == .PrimaryOverlay {
+					// This only happens on iPad in portrait orientation
+					// The animation is required because otherwise the master view controller just disappears
+					UIView.animateWithDuration(0.2, animations: { () -> Void in
+						self.splitViewController?.preferredDisplayMode = .PrimaryHidden
+					})
+					splitViewController?.preferredDisplayMode = .Automatic
+				}
+
 				saveZipCode()
 		    }
 		}

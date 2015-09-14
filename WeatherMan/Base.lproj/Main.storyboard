@@ -157,7 +157,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vC3-pB-5Vb" kind="show" identifier="showDetail" id="NGZ-st-qUo"/>
+                                    <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="showDetail" id="NGZ-st-qUo"/>
                                 </connections>
                             </button>
                         </subviews>
